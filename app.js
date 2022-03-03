@@ -13,6 +13,7 @@ const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 
+
 let scores, currentScore, activePlayer, playing;
 
 // Starting conditions
@@ -67,6 +68,7 @@ btnRoll.addEventListener('click', function () {
   }
 });
 
+
 btnHold.addEventListener('click', function () {
   if (playing) {
     // 1. Add current score to active player's score
@@ -77,17 +79,17 @@ btnHold.addEventListener('click', function () {
       scores[activePlayer];
 
     // 2. Check if player's score is >= 100
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= 20) {
       // Finish the game
       playing = false;
       diceEl.classList.add('hidden');
-
+      document.getElementById("winner").textContent = ` YOU WON `
       document
-        .querySelector(`.player--${activePlayer}`)
-        .classList.add('player--winner');
+        .querySelector(`.player--${activePlayer}`).classList.add('player--winner');
+        
       document
-        .querySelector(`.player--${activePlayer}`)
-        .classList.remove('player--active');
+        .querySelector(`.player--${activePlayer}`).classList.remove('player--active');
+       
     } else {
       // Switch to the next player
       switchPlayer();
